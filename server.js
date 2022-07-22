@@ -1,10 +1,11 @@
 // 1 initialize npm and install all dependencies
+            //              command is npm init
 // express, dotenv, cors, mongodb, ejs, nodemon (--save -dev)
-
+            // command is npm install express
 // 2 require dependencies in server dependencies
-
+            // (const express = require express)
 // 3 delare variables
-
+        //
 // create gitignore file and push to github
 
 // 4 connect to MongoDB - add connection string to .env file
@@ -30,22 +31,14 @@
 
 const express = require('express')
 const app = express()
-const cors = require("cors")
-const MongoClient = require('mongodb').MongoClient
-require('dotenv').config()
+//const cors = require('cors')
+//require('dotenv').config()
+const PORT = 1111
 
-let db,
-    dbConnectionString = process.env.DB_STRING,
-    dbName = 'fragarance-products',
-    collection
+
+
 
 //connecting to the database
-MongoClient.connect(dbConnectionString)
-    .then(client => {
-        console.log("Connected to the database")
-        db = client.db(dbName)
-        collection = db.collection("fragrance-safe-products")
-})
 
 // returning ejs/html to the root
 app.get('/', async (request, response) => {
@@ -61,9 +54,9 @@ app.set("view engine", "ejs") //helps parse ejs
 app.use(express.static('public') ) //tells where to go for static files HTML/CSS
 app.use(express.urlencoded ( {extended:true} ) ) //how to handle URLs
 app.use(express.json() ) //allows use of JSON for objects
-app.use(cors() ) //prevent cross object requests
+//app.use(cors() ) //prevent cross object requests
 
 
 app.listen(process.env.PORT || PORT, () => {
-    console.log(`Server is running on port ${process.env.PORT}`)
+    console.log(`Server is running on port ${PORT} yay` )
 })
