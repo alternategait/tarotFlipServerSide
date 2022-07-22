@@ -43,7 +43,9 @@ const PORT = 1111
 // returning ejs/html to the root
 app.get('/', async (request, response) => {
     try {
-        response.render('index.ejs')
+        response.sendFile( __dirname + "/public/index.html")
+        function flipCard(){
+            card.classList.toggle('flipCard')}
     } catch (error) {
         response.status(500).send({message: error.message})
     }
